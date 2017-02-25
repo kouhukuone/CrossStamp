@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -17,9 +18,7 @@ public class OpeningScreen extends ScreenAdapter {
     static final float CAMERA_HEIGHT = 15;
 
     private CrossStamp mGame;
-
-    TapButton mTitleButton;
-
+    SpriteBatch batch;
 
     Sprite mBg;
     OrthographicCamera mCamera; //カメラを表す
@@ -27,12 +26,13 @@ public class OpeningScreen extends ScreenAdapter {
 
     Vector3 mTouchPoint;
 
-    //コンストラクタ？
+    //コンストラクタ
     public OpeningScreen(CrossStamp game) {
         mGame = game;
+        batch = new SpriteBatch();
 
         //背景を準備
-        Texture bgTexture = new Texture("badlogic.jpg");
+        Texture bgTexture = new Texture("stage1button.png");
         //TextureRegionで切り出すときの原点は左上
         mBg = new Sprite(new TextureRegion(bgTexture, 0, 0, 540, 810));
         mBg.setSize(CAMERA_WIDTH,CAMERA_HEIGHT);
@@ -46,7 +46,6 @@ public class OpeningScreen extends ScreenAdapter {
 
         mTouchPoint = new Vector3();
 
-        createButton();
     }
 
     //描画
@@ -59,25 +58,21 @@ public class OpeningScreen extends ScreenAdapter {
         mCamera.update();
         mGame.batch.setProjectionMatrix(mCamera.combined);
 
+
         mGame.batch.begin();
-
-        //原点は左下
-        mBg.setPosition(mCamera.position.x - CAMERA_WIDTH / 2, mCamera.position.y - CAMERA_HEIGHT / 2);
         mBg.draw(mGame.batch);
-
         mGame.batch.end();
+
+        //画面タップ時 タイトル画面へ遷移
+        if (Gdx.input.isTouched()){
+            mGame.setScreen(new TitleScreen(mGame));
+        }
     }
 
     @Override
     //物理的な画面のサイズが変更された時に呼び出される
     public void resize(int width, int height){
         mViewPort.update(width, height);
-    }
-
-    private void createButton(){
-        Texture titleButtonTexture = new Texture("option_title.png");
-        mTitleButton = new TapButton(titleButtonTexture, 0, 0, 72, 30);
-        mTitleButton.setPosition(0, 0);
     }
 }
 

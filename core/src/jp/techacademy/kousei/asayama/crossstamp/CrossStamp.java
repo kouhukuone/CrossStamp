@@ -13,7 +13,7 @@ public class CrossStamp extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 
-		//GameScreenを表示
+		//オープニング画面を表示
 		setScreen(new OpeningScreen(this));
 
 	}
