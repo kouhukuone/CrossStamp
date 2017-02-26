@@ -1,9 +1,6 @@
 package jp.techacademy.kousei.asayama.crossstamp;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class CrossStamp extends Game {
@@ -15,6 +12,5 @@ public class CrossStamp extends Game {
 
 		//オープニング画面を表示
 		setScreen(new OpeningScreen(this));
-
 	}
 }

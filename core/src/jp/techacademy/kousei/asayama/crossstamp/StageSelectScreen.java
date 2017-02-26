@@ -1,8 +1,7 @@
 package jp.techacademy.kousei.asayama.crossstamp;
 
-/**
- * Created by KOUSEI on 2017/02/25.
- */
+//ステージセレクト画面
+//現在未実装
 
 public class StageSelectScreen {
 }
