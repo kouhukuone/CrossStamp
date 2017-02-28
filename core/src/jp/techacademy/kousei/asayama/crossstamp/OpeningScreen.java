@@ -2,12 +2,16 @@ package jp.techacademy.kousei.asayama.crossstamp;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class OpeningScreen extends ScreenObject {
+    Music bgm;
+    Sound seTap;
 
     //コンストラクタ
     public OpeningScreen(CrossStamp game) {
@@ -20,7 +24,14 @@ public class OpeningScreen extends ScreenObject {
         mBg.setSize(CAMERA_WIDTH,CAMERA_HEIGHT);
         mBg.setPosition(0, 0);
 
+        //効果音
+        seTap = Gdx.audio.newSound(Gdx.files.internal("se_tap.wav"));
 
+        //BGMを流す
+        bgm = Gdx.audio.newMusic(Gdx.files.internal("opening.wav"));
+        bgm.setLooping(false);      //trueにするとループする
+        bgm.setVolume(0.5f);
+        bgm.play();
     }
 
     //描画
@@ -40,8 +51,12 @@ public class OpeningScreen extends ScreenObject {
 
         //画面タップ時 タイトル画面へ遷移
         if (Gdx.input.isTouched()){
+            seTap.play();
             mGame.setScreen(new TitleScreen(mGame));
+            seTap.dispose();
+            bgm.dispose();
             this.dispose();
+
         }
     }
 

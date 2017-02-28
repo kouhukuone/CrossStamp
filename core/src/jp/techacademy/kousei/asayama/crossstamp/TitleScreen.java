@@ -1,6 +1,7 @@
 package jp.techacademy.kousei.asayama.crossstamp;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -15,6 +16,7 @@ public class TitleScreen extends ScreenObject {
     Sprite tapButton;
     Sprite mRecordButton;
     Vector3 mTouchPoint;
+    Music bgm;
 
     //コンストラクタ
     public TitleScreen(CrossStamp game){
@@ -41,6 +43,12 @@ public class TitleScreen extends ScreenObject {
 
         mTouchPoint = new Vector3();
 
+        //BGMを流す
+        bgm = Gdx.audio.newMusic(Gdx.files.internal("title.wav"));
+        bgm.setLooping(false);      //trueにするとループする
+        bgm.setVolume(0.5f);
+        bgm.play();
+
     }
 
     //描画
@@ -64,7 +72,7 @@ public class TitleScreen extends ScreenObject {
         if (Gdx.input.justTouched()) {
             if (mTouchPoint.equals(tapButton)){
                 mGame.setScreen(new OptionScreen(mGame));
-                this.dispose();
+
             }
         }
     }
