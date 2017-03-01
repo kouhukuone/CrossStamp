@@ -10,16 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 //レコード画面
 //試験的にscene2dを実装　現在正常に描画されない
-public class RecordScreen extends ScreenObject implements ApplicationListener {
+public class RecordScreen implements ApplicationListener {
 
     Stage stage;
     Texture state4button;
     Texture option_title;
     Image mOptionTitle;
 
-    public RecordScreen(CrossStamp game){
-        super(game);
-    }
 
     @Override
     public void create(){

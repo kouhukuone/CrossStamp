@@ -13,6 +13,6 @@ public class CrossStamp extends Game {
 		//オープニング画面を表示
 		//現在は試験的にレコード画面へ遷移するように設定中
 		//setScreen(new OpeningScreen(this));
-		setScreen(new RecordScreen(this));
+		//setScreen(new RecordScreen());
 	}
 }
