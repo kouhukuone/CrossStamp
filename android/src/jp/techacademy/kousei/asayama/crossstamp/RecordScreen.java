@@ -13,13 +13,70 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class RecordScreen implements ApplicationListener {
 
     Stage stage;
+    Stage stage2;
     Texture state4button;
     Texture option_title;
     Image mOptionTitle;
 
 
+    //子クラス
+    class testClass implements ApplicationListener{
+        Texture test_photo;
+        Image mTest;
+        @Override
+        public void create(){
+            stage = new Stage();
+            {
+                test_photo = new Texture("stageselect_9.png");
+                mTest = new Image(test_photo);
+                mTest.setPosition(2,2);
+                stage.addActor(mTest);
+            }
+        }
+
+        @Override
+        public void render(){
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+            Gdx.gl.glClearColor(162, 140, 130, 1);
+
+            stage.act(Gdx.graphics.getDeltaTime());
+            stage.draw();
+        }
+
+        //画面サイズ変更時
+        @Override
+        public void resize(int width, int height){
+        }
+
+        //スマホのホーム画面、着信時
+        @Override
+        public void pause(){
+
+        }
+
+        //ポーズから復帰時
+        @Override
+        public void resume(){
+
+        }
+
+        //破棄時
+        @Override
+        public void dispose(){
+
+        }
+
+    }
+
+
     @Override
     public void create(){
+
+        stage2 = new Stage();
+        {
+
+        }
+
 
         stage = new Stage();
         {
@@ -34,7 +91,7 @@ public class RecordScreen implements ApplicationListener {
     @Override
     public void render(){
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glClearColor(122, 0, 0, 1);
+        Gdx.gl.glClearColor(22, 0, 0, 1);
 
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
