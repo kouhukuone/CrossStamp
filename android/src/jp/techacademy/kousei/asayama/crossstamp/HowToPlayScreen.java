@@ -1,30 +1,16 @@
 package jp.techacademy.kousei.asayama.crossstamp;
 
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-//レコード画面
-public class RecordScreen implements ApplicationListener {
-
-    Stage stage;
-    Texture option_title;
-    Image mOptionTitle;
-
+//遊び方画面
+public class HowToPlayScreen implements ApplicationListener {
+    //最初に呼び出される
     @Override
     public void create(){
 
-        stage = new Stage();
-        {
-            option_title = new Texture("option_title.png");
-            mOptionTitle = new Image(option_title);
-            mOptionTitle.setPosition(2,2);
-            stage.addActor(mOptionTitle);
-        }
     }
 
     //描画
@@ -33,8 +19,6 @@ public class RecordScreen implements ApplicationListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(22, 0, 0, 1);
 
-        stage.act(Gdx.graphics.getDeltaTime());
-        stage.draw();
     }
 
     //画面サイズ変更時
@@ -59,5 +43,4 @@ public class RecordScreen implements ApplicationListener {
     public void dispose(){
 
     }
-
 }
