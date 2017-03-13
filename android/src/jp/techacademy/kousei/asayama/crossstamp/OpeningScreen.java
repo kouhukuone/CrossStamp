@@ -4,9 +4,14 @@ package jp.techacademy.kousei.asayama.crossstamp;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 //オープニング画面
 public class OpeningScreen implements ApplicationListener {
+    Stage stage;
+
+
     //最初に呼び出される
     @Override
     public void create(){

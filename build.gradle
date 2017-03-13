@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.deploygate:gradle:1.0.4'
     }
 }
 
@@ -24,6 +25,8 @@ allprojects {
         aiVersion = '1.8.0'
     }
 
+
+
     repositories {
         mavenLocal()
         mavenCentral()
@@ -34,6 +37,7 @@ allprojects {
 
 project(":android") {
     apply plugin: "android"
+    apply plugin: 'deploygate'
 
     configurations { natives }
 
@@ -51,16 +55,17 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
+
     }
 }
 
 project(":core") {
     apply plugin: "java"
 
-
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+
     }
 }
 

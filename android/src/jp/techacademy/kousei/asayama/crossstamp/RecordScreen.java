@@ -1,7 +1,9 @@
 package jp.techacademy.kousei.asayama.crossstamp;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 //レコード画面
-public class RecordScreen implements ApplicationListener {
+public class RecordScreen extends Game implements ApplicationListener {
 
     Stage stage;
     Texture option_title;
@@ -17,7 +19,6 @@ public class RecordScreen implements ApplicationListener {
 
     @Override
     public void create(){
-
         stage = new Stage();
         {
             option_title = new Texture("option_title.png");
@@ -25,6 +26,7 @@ public class RecordScreen implements ApplicationListener {
             mOptionTitle.setPosition(2,2);
             stage.addActor(mOptionTitle);
         }
+
     }
 
     //描画
