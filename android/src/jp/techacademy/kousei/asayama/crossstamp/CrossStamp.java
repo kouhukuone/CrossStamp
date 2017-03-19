@@ -1,18 +1,14 @@
 package jp.techacademy.kousei.asayama.crossstamp;
 
+import android.app.Application;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.deploygate.sdk.DeployGate;
 
-public class CrossStamp extends Game {
-	public SpriteBatch batch;
-	
-	@Override
+public class CrossStamp extends Application {
 	public void create () {
-		batch = new SpriteBatch();
-
-		//オープニング画面を表示
-		//現在は試験的にレコード画面へ遷移するように設定中
-		//setScreen(new OpeningScreen(this));
-		//setScreen(new RecordScreen());
+		super.onCreate();
+		DeployGate.install(this);
 	}
 }
